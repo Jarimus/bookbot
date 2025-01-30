@@ -30,7 +30,7 @@ def words_to_ignore() -> list:
     """Asks the user for words to ignore in the analysis. Includes a set of common words in English."""
     ignored_words = []
 
-    print("Would you like to ignore some common words? (Such as a, an, you, I, ...)\n")
+    print("Would you like to ignore some common words? (Such as a, an, you, I, ...)")
     if input("Type 'y' to ignore the common words or anythine else to include them. ") == "y":
         common_words = ["the", "and", "i", "to", "of", "a", "an", "in", "that", "it", "he", "she", "you", "they", "was", "is",
         "his", "her", "my", "have", "as", "with", "had", "which", "at", "for", "but", "not", "me", "be", "we", "there", "from",
@@ -38,9 +38,17 @@ def words_to_ignore() -> list:
         "down", "what", "when", "where", "could", "has", "do", "should", "will", "who", "if", "may", "am", "us", "over", "can", "must",
         "shall", "about", "before", "after", "than", "did", "how", "why", "here", "then", "into", "or", "well", "some", "them", "any",
         "might", "much", "more", "just", "its", "such", "their", "through", "most", "too", "these", "those", "own", "being", "whom",
-        "very", "made", "make", ]
+        "very", "made", "make", "unto", "thou", "thy", "ye", "thee", "hath", "came", "shalt", "hast", "o", "thine", "thereof", ]
         ignored_words.extend(common_words)
         print("Common words added to the ignore list!\n")
+
+    ignore_more_words = input("Would you like to ignore 4000 most common words in English? Type 'y' to ignore. ")
+    if ignore_more_words == "y":
+        path = os.path.abspath( os.path.dirname(__file__) )
+        words_4000 = read_file(path + "/" + "common-words.csv")
+        words_4000 = words_4000.lower().split("\n")
+        ignored_words.extend( words_4000 )
+        print("4000 words added to the ignore list!\n")
 
     print("Are there any words you'd like to ignore?")
     while True:
