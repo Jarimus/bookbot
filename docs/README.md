@@ -2,7 +2,7 @@
 
 ## Description
 
-BookBot is my first project on [Boot.Dev](https://boot.dev)!
+BookBot is my first [Boot.dev](https://www.boot.dev) project!
 
 ## Features
 
